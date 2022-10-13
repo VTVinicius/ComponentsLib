@@ -28,21 +28,3 @@ fun OnlyLettersInputText(
         onSearch = onSearch
     )
 }
-
-//@Preview
-//@Composable
-//fun OnlyLettersInputTextPreview() {
-//    Box(
-//        Modifier
-//            .fillMaxSize()
-//            .background(Color.White)
-//            .padding(16.dp)
-//    ) {
-//        OnlyLettersInputText(
-//            state = InputTextState.NORMAL,
-//            hint = "Campo Simples apenas Letras",
-//            maxLength = 100,
-//            onSearch = {}
-//        )
-//    }
-//}

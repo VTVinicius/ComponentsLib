@@ -57,17 +57,3 @@ fun NameInputText(
         }
     )
 }
-
-//@Preview
-//@Composable
-//fun NameInputTextPreview() {
-//    Column(
-//        Modifier
-//            .fillMaxSize()
-//            .background(Color.White)
-//            .padding(16.dp)
-//    ) {
-//        VerticalSpacer(height = 16)
-//        NameInputText{}
-//    }
-//}

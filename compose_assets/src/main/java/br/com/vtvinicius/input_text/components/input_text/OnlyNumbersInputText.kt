@@ -28,21 +28,3 @@ fun OnlyNumbersInputText(
         onSearch = onSearch
     )
 }
-//
-//@Preview
-//@Composable
-//fun OnlyNumbersInputTextPreview() {
-//    Box(
-//        Modifier
-//            .fillMaxSize()
-//            .background(Color.White)
-//            .padding(16.dp)
-//    ) {
-//        OnlyNumbersInputText(
-//            state = InputTextState.NORMAL,
-//            hint = "Campo Simples apenas Numeros",
-//            maxLength = 100,
-//            onSearch = {}
-//        )
-//    }
-//}

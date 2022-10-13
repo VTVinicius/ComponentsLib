@@ -9,12 +9,18 @@ import br.com.vtvinicius.input_text.R
 import br.com.vtvinicius.input_text.utils.RegexEnum
 import br.com.vtvinicius.input_text.utils.Validation
 
+// TypePassword = 0  -> Senha Forte
+// TypePassword = 1  -> Senha Numerica
+
+
 @Composable
 fun PasswordInputText(
     modifier: Modifier = Modifier,
     onSearch: (String) -> Unit,
     state: InputTextState = InputTextState.PASSWORD,
-    showError: Boolean = true
+    showError: Boolean = true,
+    typePassword: Int = 0,
+    maxLength: Int = 30,
 ) {
 
     var currentState: InputTextState = state
@@ -30,6 +36,26 @@ fun PasswordInputText(
     LaunchedEffect(LocalContext.current) {
         currentState.getPasswordIcon(R.drawable.ic_eye_closed)
     }
+
+    var regexEnum: RegexEnum = RegexEnum.ALL
+    var keyboardType = KeyboardType.Password
+
+    when(typePassword) {
+        0 -> {
+            regexEnum = RegexEnum.ALL
+            keyboardType = KeyboardType.Password
+        }
+        1 -> {
+            regexEnum = RegexEnum.NUMBERS
+            keyboardType = KeyboardType.NumberPassword
+        }
+        else -> {
+            regexEnum = RegexEnum.ALL
+            keyboardType = KeyboardType.Password
+        }
+
+    }
+
 
     if (showError) {
         when (error.value) {
@@ -49,11 +75,11 @@ fun PasswordInputText(
         hint = "Senha",
         state = currentState,
         mask = passwordVisualTransformation,
-        maxLength = 100,
-        inputType = RegexEnum.ALL,
+        maxLength = maxLength,
+        inputType = regexEnum,
         styleType = styleType,
         keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Password
+            keyboardType = keyboardType
         ),
         onIconClick = {
             if (passwordVisualTransformation is PasswordVisualTransformation) {
@@ -66,28 +92,31 @@ fun PasswordInputText(
         },
         onSearch = {
             onSearch(it)
-            when (Validation().validatePassword(it)) {
-                true -> {
-                    error.value = false
+            when (typePassword) {
+                0 -> {
+
                 }
-                false -> {
-                    error.value = true
+                1 -> {
+                    when (Validation().validateNumberPassword(it)) {
+                        true -> {
+                            error.value = false
+                        }
+                        false -> {
+                            error.value = true
+                        }
+                    }
+                }
+                else -> {
+                    when (Validation().validateStrongPassword(it)) {
+                        true -> {
+                            error.value = false
+                        }
+                        false -> {
+                            error.value = true
+                        }
+                    }
                 }
             }
         }
     )
 }
-
-//@Preview
-//@Composable
-//fun PasswordInputTextPreview() {
-//    Box(
-//        Modifier
-//            .fillMaxSize()
-//            .background(Color.White)
-//            .padding(16.dp)
-//    ) {
-//        PasswordInputText(onSearch = {})
-//
-//    }
-//}

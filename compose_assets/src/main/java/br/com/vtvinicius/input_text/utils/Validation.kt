@@ -37,8 +37,11 @@ class Validation {
         return email.matches(RegexEnum.EMAIL.value)
     }
 
-    fun validatePassword(password: String): Boolean {
-        return password.matches(RegexEnum.PASSWORD.value)
+    fun validateStrongPassword(password: String): Boolean {
+        return password.matches(RegexEnum.STRONG_PASSWORD.value)
+    }
+    fun validateNumberPassword(password: String): Boolean {
+        return password.matches(RegexEnum.NUMBERS.value)
     }
 
 }

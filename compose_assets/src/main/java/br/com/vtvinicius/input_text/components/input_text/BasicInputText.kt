@@ -11,7 +11,8 @@ fun BasicInputText(
     state: InputTextState = InputTextState.NORMAL,
     hint: String = "",
     maxLength: Int,
-    onSearch: (String) -> Unit
+    onSearch: (String) -> Unit,
+    inputType: RegexEnum = RegexEnum.ALL,
 ) {
     BaseInputText(
         modifier = modifier,
@@ -19,7 +20,7 @@ fun BasicInputText(
         state = state,
         mask = VisualTransformation.None,
         maxLength = maxLength,
-        inputType = RegexEnum.ALL,
+        inputType = inputType,
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Text
         ),

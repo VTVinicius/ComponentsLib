@@ -15,13 +15,9 @@ fun MoneyInputText(
     modifier: Modifier = Modifier,
     state: InputTextState = InputTextState.NORMAL,
     onSearch: (String) -> Unit,
-    editText: EditText? = null,
+    hint: String = "Dinheiro",
+    maxLength: Int = 14,
 ) {
-
-    val LOCALE_PT_BR = Locale("pt", "BR")
-    val mFormatter: NumberFormat = NumberFormat.getCurrencyInstance(LOCALE_PT_BR)
-    var mIsUpdating: Boolean = false
-
     val styleType: InputTextStyleType = InputTextStyleType.NOTHING
 
     val error = remember { mutableStateOf(false) }
@@ -43,9 +39,9 @@ fun MoneyInputText(
 
     BaseInputText(
         modifier = modifier,
-        hint = "Dinheiro",
+        hint = hint,
         state = currentState,
-        maxLength = 69,
+        maxLength = maxLength,
         styleType = styleType,
         inputType = RegexEnum.NUMBERS,
         mask = VisualTransformation.None,
