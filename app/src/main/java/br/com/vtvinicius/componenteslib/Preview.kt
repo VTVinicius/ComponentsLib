@@ -1,6 +1,7 @@
 package br.com.vtvinicius.componenteslib
 
 import BasicInputText
+import CNPJInputText
 import CPFInputText
 import CepInputText
 import ComposeTheme.typography
@@ -130,6 +131,14 @@ fun Preview(){
         VerticalSpacer(height = 8)
 
         BasicInputText(maxLength = 100, onSearch = {}, state = InputTextState.GRAY)
+
+        VerticalSpacer(height = 16)
+
+        SubtitleText(text = "Input de CNPJ.")
+
+        VerticalSpacer(height = 8)
+
+        CNPJInputText(onSearch = {}, state = InputTextState.OUTLINE)
 
     }
 

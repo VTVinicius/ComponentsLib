@@ -94,7 +94,14 @@ fun PasswordInputText(
             onSearch(it)
             when (typePassword) {
                 0 -> {
-
+                    when (Validation().validateStrongPassword(it)) {
+                        true -> {
+                            error.value = false
+                        }
+                        false -> {
+                            error.value = true
+                        }
+                    }
                 }
                 1 -> {
                     when (Validation().validateNumberPassword(it)) {

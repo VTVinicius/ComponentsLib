@@ -48,6 +48,7 @@ class Mask(
         fun buildBirthday() = Mask(MaskTypes.DATE.value)
         fun buildPhone() = Mask(MaskTypes.PHONE.value)
         fun buildCEP() = Mask(MaskTypes.CEP.value)
+        fun buildCNPJ() = Mask(MaskTypes.CNPJ.value)
     }
 }
 
