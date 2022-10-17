@@ -5,6 +5,7 @@ import CNPJInputText
 import CPFInputText
 import CepInputText
 import ComposeTheme.typography
+import DateInputText
 import EmailInputText
 import MoneyInputText
 import NameInputText
@@ -139,6 +140,14 @@ fun Preview(){
         VerticalSpacer(height = 8)
 
         CNPJInputText(onSearch = {}, state = InputTextState.OUTLINE)
+
+        VerticalSpacer(height = 16)
+
+        SubtitleText(text = "Input de Data.")
+
+        VerticalSpacer(height = 8)
+
+        DateInputText(onSearch = {}, state = InputTextState.OUTLINE)
 
     }
 

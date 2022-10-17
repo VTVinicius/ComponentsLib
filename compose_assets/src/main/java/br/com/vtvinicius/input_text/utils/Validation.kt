@@ -1,5 +1,9 @@
 package br.com.vtvinicius.input_text.utils
 
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
+
 class Validation {
 
     fun isValidCNPJ(value: String): Boolean {
@@ -84,5 +88,6 @@ class Validation {
     fun validateNumberPassword(password: String): Boolean {
         return password.matches(RegexEnum.NUMBERS.value)
     }
+
 
 }

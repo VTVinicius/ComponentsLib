@@ -6,7 +6,8 @@ enum class InputTextStyleType(val value: Int) {
     CEP(3),
     PASSWORD(4),
     EMAIL(5),
-    CNPJ(6);
+    CNPJ(6),
+    DATE(7);
 
     var errorMessage: String = ""
 
@@ -19,6 +20,7 @@ enum class InputTextStyleType(val value: Int) {
         PASSWORD.value -> errorMessage = message
         EMAIL.value -> errorMessage = message
         CNPJ.value -> errorMessage = message
+        DATE.value -> errorMessage = message
         else -> ""
     }
 
