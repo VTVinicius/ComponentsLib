@@ -6,7 +6,7 @@
 //        verticalArrangement = Arrangement.SpaceEvenly,
 //        modifier = Modifier
 //            .fillMaxSize()
-//            .background(Color.White)
+//            .br.com.vtvinicius.theme.theme.getBackground(Color.White)
 //            .padding(32.dp)
 //            .verticalScroll(state = rememberScrollState())
 //

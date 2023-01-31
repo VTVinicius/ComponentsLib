@@ -1,4 +1,6 @@
-enum class InputTextStyleType(val value: Int) {
+package br.com.vtvinicius.input_text.components.input_text.base
+
+enum class InputTextStyleTypeLib(val value: Int) {
     NOTHING(-1),
     CPF(0),
     PHONE(1),

@@ -1,3 +1,5 @@
+package br.com.vtvinicius.input_text.components.input_text
+
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -6,6 +8,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import br.com.vtvinicius.input_text.R
+import br.com.vtvinicius.input_text.components.input_text.base.BaseInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.base.InputTextStateLib
+import br.com.vtvinicius.input_text.components.input_text.base.InputTextStyleTypeLib
 import br.com.vtvinicius.input_text.utils.RegexEnum
 import br.com.vtvinicius.input_text.utils.Validation
 
@@ -14,19 +19,19 @@ import br.com.vtvinicius.input_text.utils.Validation
 
 
 @Composable
-fun PasswordInputText(
+fun PasswordInputTextLib(
     modifier: Modifier = Modifier,
     onSearch: (String) -> Unit,
-    state: InputTextState = InputTextState.PASSWORD,
+    state: InputTextStateLib = InputTextStateLib.PASSWORD,
     showError: Boolean = true,
     typePassword: Int = 0,
     maxLength: Int = 30,
     errorMessage: String = "Sua senha deve conter no minimo 6 digitos, Letras Maiúsculas, Minúsculas, Números e Símbolos",
 ) {
 
-    var currentState: InputTextState = state
+    var currentState: InputTextStateLib = state
 
-    val styleType: InputTextStyleType = InputTextStyleType.PASSWORD
+    val styleType: InputTextStyleTypeLib = InputTextStyleTypeLib.PASSWORD
 
     var passwordVisualTransformation: VisualTransformation by remember {
         mutableStateOf(PasswordVisualTransformation())
@@ -61,17 +66,17 @@ fun PasswordInputText(
     if (showError) {
         when (error.value) {
             true -> {
-                currentState = InputTextState.PASSWORD_ERROR
+                currentState = InputTextStateLib.PASSWORD_ERROR
                 styleType.getErrorMessage(errorMessage)
             }
             false -> {
-                currentState = InputTextState.PASSWORD
+                currentState = InputTextStateLib.PASSWORD
                 styleType.getErrorMessage("")
             }
         }
     }
 
-    BaseInputText(
+    BaseInputTextLib(
         modifier = modifier,
         hint = "Senha",
         state = currentState,

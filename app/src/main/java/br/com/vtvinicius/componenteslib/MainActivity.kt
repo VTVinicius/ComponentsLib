@@ -1,6 +1,6 @@
 package br.com.vtvinicius.componenteslib
 
-import ComposeThemes
+import br.com.vtvinicius.theme.theme.ComposeThemes
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent

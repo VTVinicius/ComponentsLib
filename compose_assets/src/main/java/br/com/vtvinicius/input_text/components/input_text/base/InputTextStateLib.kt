@@ -1,10 +1,15 @@
+package br.com.vtvinicius.input_text.components.input_text.base
+
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import br.com.vtvinicius.theme.theme.gray
+import br.com.vtvinicius.theme.theme.inputTextGrey
+import br.com.vtvinicius.theme.theme.red
 
 
-enum class InputTextState(val value: Int) {
+enum class InputTextStateLib(val value: Int) {
     NORMAL(0),
     OUTLINE(1),
     GRAY(2),

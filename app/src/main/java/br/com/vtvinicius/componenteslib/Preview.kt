@@ -1,18 +1,18 @@
 package br.com.vtvinicius.componenteslib
 
-import BasicInputText
-import CNPJInputText
-import CPFInputText
-import CepInputText
-import ComposeTheme.typography
-import DateInputText
-import EmailInputText
-import MoneyInputText
-import NameInputText
-import OnlyLettersInputText
-import OnlyNumbersInputText
-import PasswordInputText
-import PhoneInputText
+import br.com.vtvinicius.input_text.components.input_text.BasicInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.CNPJInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.CPFInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.CepInputTextLib
+import br.com.vtvinicius.theme.theme.ComposeTheme.typography
+import br.com.vtvinicius.input_text.components.input_text.DateInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.EmailInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.MoneyInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.NameInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.OnlyLettersInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.OnlyNumbersInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.PasswordInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.PhoneInputTextLib
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -25,7 +25,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import background
+import br.com.vtvinicius.theme.theme.background
 import br.com.vtvinicius.input_text.utils.VerticalSpacer
 
 @Composable
@@ -59,7 +59,7 @@ fun Preview(){
 
         VerticalSpacer(height = 24)
 
-        MoneyInputText(onSearch = {})
+        MoneyInputTextLib(onSearch = {})
 
         VerticalSpacer(height = 24)
 
@@ -67,7 +67,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        CepInputText(onSearch = {})
+        CepInputTextLib(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -75,7 +75,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        CPFInputText(onSearch = {})
+        CPFInputTextLib(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -83,7 +83,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        EmailInputText(onSearch = {})
+        EmailInputTextLib(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -91,7 +91,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        NameInputText(onSearch = {})
+        NameInputTextLib(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -99,7 +99,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        PasswordInputText(onSearch = {})
+        PasswordInputTextLib(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -107,7 +107,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        PhoneInputText(onSearch = {})
+        PhoneInputTextLib(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -115,7 +115,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        OnlyLettersInputText(maxLength = 60, onSearch = {})
+        OnlyLettersInputTextLib(maxLength = 60, onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -123,7 +123,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        OnlyNumbersInputText(maxLength = 10, onSearch = {})
+        OnlyNumbersInputTextLib(maxLength = 10, onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -131,7 +131,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        BasicInputText(maxLength = 100, onSearch = {})
+        BasicInputTextLib(maxLength = 100, onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -139,7 +139,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        CNPJInputText(onSearch = {})
+        CNPJInputTextLib(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -147,7 +147,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        DateInputText(onSearch = { println("Teste: $it") })
+        DateInputTextLib(onSearch = { println("Teste: $it") })
 
     }
 

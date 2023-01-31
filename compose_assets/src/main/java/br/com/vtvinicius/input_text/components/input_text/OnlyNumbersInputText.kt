@@ -1,21 +1,25 @@
+package br.com.vtvinicius.input_text.components.input_text
+
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
+import br.com.vtvinicius.input_text.components.input_text.base.BaseInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.base.InputTextStateLib
 import br.com.vtvinicius.input_text.utils.RegexEnum
 
 @Composable
-fun OnlyNumbersInputText(
+fun OnlyNumbersInputTextLib(
     modifier: Modifier = Modifier,
-    state: InputTextState = InputTextState.OUTLINE,
+    state: InputTextStateLib = InputTextStateLib.OUTLINE,
     hint: String = "",
     maxLength: Int,
     onSearch: (String) -> Unit
 ) {
     state.getPasswordIcon(null)
 
-    BaseInputText(
+    BaseInputTextLib(
         modifier = modifier,
         hint = hint,
         state = state,

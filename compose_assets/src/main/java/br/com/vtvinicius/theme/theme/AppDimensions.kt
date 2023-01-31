@@ -1,3 +1,5 @@
+package br.com.vtvinicius.theme.theme
+
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp

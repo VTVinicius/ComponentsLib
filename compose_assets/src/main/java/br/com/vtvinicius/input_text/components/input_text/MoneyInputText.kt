@@ -1,4 +1,5 @@
-import android.widget.EditText
+package br.com.vtvinicius.input_text.components.input_text
+
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -6,30 +7,31 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
+import br.com.vtvinicius.input_text.components.input_text.base.BaseInputTextLib
+import br.com.vtvinicius.input_text.components.input_text.base.InputTextStateLib
+import br.com.vtvinicius.input_text.components.input_text.base.InputTextStyleTypeLib
 import br.com.vtvinicius.input_text.utils.RegexEnum
-import java.text.NumberFormat
-import java.util.*
 
 @Composable
-fun MoneyInputText(
+fun MoneyInputTextLib(
     modifier: Modifier = Modifier,
-    state: InputTextState = InputTextState.OUTLINE,
+    state: InputTextStateLib = InputTextStateLib.OUTLINE,
     onSearch: (String) -> Unit,
     hint: String = "Dinheiro",
     maxLength: Int = 14,
     errorMessage: String = "Valor inválido",
 ) {
-    val styleType: InputTextStyleType = InputTextStyleType.NOTHING
+    val styleType: InputTextStyleTypeLib = InputTextStyleTypeLib.NOTHING
 
     val error = remember { mutableStateOf(false) }
 
-    var currentState: InputTextState = state
+    var currentState: InputTextStateLib = state
 
     currentState.getPasswordIcon(null)
 
     when (error.value) {
         true -> {
-            currentState = InputTextState.ERROR
+            currentState = InputTextStateLib.ERROR
             styleType.getErrorMessage(errorMessage)
         }
         else -> {
@@ -38,7 +40,7 @@ fun MoneyInputText(
         }
     }
 
-    BaseInputText(
+    BaseInputTextLib(
         modifier = modifier,
         hint = hint,
         state = currentState,

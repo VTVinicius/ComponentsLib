@@ -1,4 +1,7 @@
-import ComposeTheme.typography
+package br.com.vtvinicius.input_text.components.input_text.base
+
+import br.com.vtvinicius.theme.theme.ComposeTheme
+import br.com.vtvinicius.theme.theme.ComposeTheme.typography
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -22,22 +25,24 @@ import br.com.vtvinicius.input_text.utils.HorizontalSpacer
 import br.com.vtvinicius.input_text.utils.RegexEnum
 import br.com.vtvinicius.input_text.utils.VerticalSpacer
 import br.com.vtvinicius.input_text.utils.unmask
+import br.com.vtvinicius.theme.theme.gray
+import br.com.vtvinicius.theme.theme.red
 import java.text.NumberFormat
 import java.util.*
 
 
 @Composable
-fun BaseInputText(
+fun BaseInputTextLib(
     modifier: Modifier = Modifier,
     hint: String = "",
     mask: VisualTransformation? = null,
     maxLength: Int? = null,
-    state: InputTextState = InputTextState.NORMAL,
+    state: InputTextStateLib = InputTextStateLib.NORMAL,
     onSearch: (String) -> Unit = {},
     onIconClick: () -> Unit = {},
     isMoney: Boolean = false,
     inputType: RegexEnum? = null,
-    styleType: InputTextStyleType = InputTextStyleType.NOTHING,
+    styleType: InputTextStyleTypeLib = InputTextStyleTypeLib.NOTHING,
     keyboardOptions: KeyboardOptions = KeyboardOptions(),
 ) {
 
