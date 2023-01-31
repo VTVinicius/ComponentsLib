@@ -13,10 +13,11 @@ import java.util.*
 @Composable
 fun MoneyInputText(
     modifier: Modifier = Modifier,
-    state: InputTextState = InputTextState.NORMAL,
+    state: InputTextState = InputTextState.OUTLINE,
     onSearch: (String) -> Unit,
     hint: String = "Dinheiro",
     maxLength: Int = 14,
+    errorMessage: String = "Valor inválido",
 ) {
     val styleType: InputTextStyleType = InputTextStyleType.NOTHING
 
@@ -29,7 +30,7 @@ fun MoneyInputText(
     when (error.value) {
         true -> {
             currentState = InputTextState.ERROR
-            styleType.getErrorMessage("Nome incompleto")
+            styleType.getErrorMessage(errorMessage)
         }
         else -> {
             currentState = state

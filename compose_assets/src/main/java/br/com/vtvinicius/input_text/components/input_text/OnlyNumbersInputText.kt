@@ -8,7 +8,7 @@ import br.com.vtvinicius.input_text.utils.RegexEnum
 @Composable
 fun OnlyNumbersInputText(
     modifier: Modifier = Modifier,
-    state: InputTextState = InputTextState.NORMAL,
+    state: InputTextState = InputTextState.OUTLINE,
     hint: String = "",
     maxLength: Int,
     onSearch: (String) -> Unit

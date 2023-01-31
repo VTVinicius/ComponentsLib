@@ -1,5 +1,6 @@
 package br.com.vtvinicius.input_text.utils
 
+import androidx.compose.ui.graphics.drawscope.Stroke
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -89,5 +90,15 @@ class Validation {
         return password.matches(RegexEnum.NUMBERS.value)
     }
 
+    fun isValidDate(date: String): Boolean {
+        val dateFormat = SimpleDateFormat("ddMMyyyy", Locale.getDefault())
+        dateFormat.isLenient = false
+        return try {
+            val dateObj = dateFormat.parse(date)
+            dateObj.before(Date())
+        } catch (e: ParseException) {
+            false
+        }
+    }
 
 }

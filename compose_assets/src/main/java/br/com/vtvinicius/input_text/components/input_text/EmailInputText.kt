@@ -11,8 +11,11 @@ import br.com.vtvinicius.input_text.utils.Validation
 @Composable
 fun EmailInputText(
     modifier: Modifier = Modifier,
-    state: InputTextState = InputTextState.NORMAL,
-    onSearch: (String) -> Unit
+    state: InputTextState = InputTextState.OUTLINE,
+    onSearch: (String) -> Unit,
+    hint: String = "E-mail",
+    maxLength : Int = 100,
+    errorMessage: String = "E-mail inválido",
 ) {
     val styleType: InputTextStyleType = InputTextStyleType.EMAIL
 
@@ -25,7 +28,7 @@ fun EmailInputText(
     when (error.value) {
         true -> {
             currentState = InputTextState.ERROR
-            styleType.getErrorMessage("E-mail inválido")
+            styleType.getErrorMessage(errorMessage)
         }
         else -> {
             currentState = state
@@ -35,20 +38,20 @@ fun EmailInputText(
 
     BaseInputText(
         modifier = modifier,
-        hint = "E-mail",
+        hint = hint,
         state = currentState,
         mask = VisualTransformation.None,
-        maxLength = 100,
+        maxLength = maxLength,
         styleType = styleType,
         inputType = RegexEnum.ALL,
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Text
         ),
         onSearch = {
-            onSearch(it)
             when (Validation().validateEmail(it)) {
                 true -> {
                     error.value = false
+                    onSearch(it)
                 }
                 false -> {
                     error.value = true

@@ -21,6 +21,7 @@ fun PasswordInputText(
     showError: Boolean = true,
     typePassword: Int = 0,
     maxLength: Int = 30,
+    errorMessage: String = "Sua senha deve conter no minimo 6 digitos, Letras Maiúsculas, Minúsculas, Números e Símbolos",
 ) {
 
     var currentState: InputTextState = state
@@ -61,7 +62,7 @@ fun PasswordInputText(
         when (error.value) {
             true -> {
                 currentState = InputTextState.PASSWORD_ERROR
-                styleType.getErrorMessage("Sua senha deve conter no minimo 6 digitos, Letras Maiúsculas, Minúsculas, Números e Símbolos")
+                styleType.getErrorMessage(errorMessage)
             }
             false -> {
                 currentState = InputTextState.PASSWORD
@@ -91,12 +92,12 @@ fun PasswordInputText(
             }
         },
         onSearch = {
-            onSearch(it)
             when (typePassword) {
                 0 -> {
                     when (Validation().validateStrongPassword(it)) {
                         true -> {
                             error.value = false
+                            onSearch(it)
                         }
                         false -> {
                             error.value = true
@@ -107,6 +108,7 @@ fun PasswordInputText(
                     when (Validation().validateNumberPassword(it)) {
                         true -> {
                             error.value = false
+                            onSearch(it)
                         }
                         false -> {
                             error.value = true
@@ -117,6 +119,7 @@ fun PasswordInputText(
                     when (Validation().validateStrongPassword(it)) {
                         true -> {
                             error.value = false
+                            onSearch(it)
                         }
                         false -> {
                             error.value = true

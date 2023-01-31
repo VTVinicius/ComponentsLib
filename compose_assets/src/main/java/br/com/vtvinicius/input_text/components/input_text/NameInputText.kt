@@ -11,8 +11,11 @@ import br.com.vtvinicius.input_text.utils.Validation
 @Composable
 fun NameInputText(
     modifier: Modifier = Modifier,
-    state: InputTextState = InputTextState.NORMAL,
-    onSearch: (String) -> Unit
+    state: InputTextState = InputTextState.OUTLINE,
+    onSearch: (String) -> Unit,
+    hint: String = "Nome",
+    maxLength : Int = 69,
+    errorMessage: String = "Nome inválido",
 ) {
     val styleType: InputTextStyleType = InputTextStyleType.NAME
 
@@ -25,7 +28,7 @@ fun NameInputText(
     when (error.value) {
         true -> {
             currentState = InputTextState.ERROR
-            styleType.getErrorMessage("Nome incompleto")
+            styleType.getErrorMessage(errorMessage)
         }
         else -> {
             currentState = state
@@ -35,9 +38,9 @@ fun NameInputText(
 
     BaseInputText(
         modifier = modifier,
-        hint = "Nome",
+        hint = hint,
         state = currentState,
-        maxLength = 69,
+        maxLength = maxLength,
         styleType = styleType,
         inputType = RegexEnum.LETTERS,
         mask = VisualTransformation.None,
@@ -45,10 +48,10 @@ fun NameInputText(
             keyboardType = KeyboardType.Text
         ),
         onSearch = {
-            onSearch(it)
             when (Validation().validateName(it) && !it.contains("  ")) {
                 true -> {
                     error.value = false
+                    onSearch(it)
                 }
                 false -> {
                     error.value = true

@@ -10,8 +10,10 @@ import br.com.vtvinicius.input_text.utils.RegexEnum
 @Composable
 fun PhoneInputText(
     modifier: Modifier = Modifier,
-    state: InputTextState = InputTextState.NORMAL,
-    onSearch: (String) -> Unit
+    state: InputTextState = InputTextState.OUTLINE,
+    onSearch: (String) -> Unit,
+    hint: String = "Telefone",
+    errorMessage: String = "Telefone inválido",
 ) {
 
     val styleType: InputTextStyleType = InputTextStyleType.PHONE
@@ -25,7 +27,7 @@ fun PhoneInputText(
     when (error.value) {
         true -> {
             currentState = InputTextState.ERROR
-            styleType.getErrorMessage("Digite um número de telefone válido")
+            styleType.getErrorMessage(errorMessage)
         }
         else -> {
             currentState = state
@@ -35,7 +37,7 @@ fun PhoneInputText(
 
     BaseInputText(
         modifier = modifier,
-        hint = "Telefone",
+        hint = hint,
         state = currentState,
         mask = Mask.buildPhone(),
         maxLength = 11,
@@ -45,8 +47,14 @@ fun PhoneInputText(
             keyboardType = KeyboardType.Number
         ),
         onSearch = {
-            onSearch(it)
-            error.value = it.length < 11
+
+            if (it.length < 11) {
+                error.value = true
+            } else {
+                error.value = false
+                onSearch(it)
+            }
+
         }
     )
 }

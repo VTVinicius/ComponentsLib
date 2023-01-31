@@ -7,13 +7,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import br.com.vtvinicius.input_text.utils.Mask
 import br.com.vtvinicius.input_text.utils.RegexEnum
 import br.com.vtvinicius.input_text.utils.Validation
-import br.com.vtvinicius.input_text.utils.unmask
 
 @Composable
 fun DateInputText(
     modifier: Modifier = Modifier,
-    state: InputTextState = InputTextState.NORMAL,
-    onSearch: (String) -> Unit
+    state: InputTextState = InputTextState.OUTLINE,
+    onSearch: (String) -> Unit,
+    hint: String = "Data de Nascimento",
+    errorMessage: String = "Data inválida",
 ) {
 
     val styleType: InputTextStyleType = InputTextStyleType.DATE
@@ -27,7 +28,7 @@ fun DateInputText(
     when (error.value) {
         true -> {
             currentState = InputTextState.ERROR
-            styleType.getErrorMessage("Data Incompleta")
+            styleType.getErrorMessage(errorMessage)
         }
         else -> {
             currentState = state
@@ -37,7 +38,7 @@ fun DateInputText(
 
     BaseInputText(
         modifier = modifier,
-        hint = "Data de Nascimento",
+        hint = hint,
         state = currentState,
         mask = Mask.buildBirthday(),
         maxLength = 8,
@@ -47,7 +48,19 @@ fun DateInputText(
             keyboardType = KeyboardType.Number
         ),
         onSearch = {
-            onSearch(it)
+            if (it.length >= 8) {
+                when (Validation().isValidDate(it)) {
+                    true -> {
+                        error.value = false
+                        onSearch(it)
+                    }
+                    false -> {
+                        error.value = true
+                    }
+                }
+            } else{
+                error.value = false
+            }
 
         }
     )

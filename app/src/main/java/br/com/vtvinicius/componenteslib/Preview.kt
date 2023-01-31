@@ -67,7 +67,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        CepInputText(onSearch = {}, state = InputTextState.NORMAL)
+        CepInputText(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -75,7 +75,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        CPFInputText(onSearch = {}, state = InputTextState.GRAY)
+        CPFInputText(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -83,7 +83,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        EmailInputText(onSearch = {}, state = InputTextState.OUTLINE)
+        EmailInputText(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -91,7 +91,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        NameInputText(onSearch = {}, state = InputTextState.NORMAL)
+        NameInputText(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -107,7 +107,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        PhoneInputText(onSearch = {}, state = InputTextState.GRAY)
+        PhoneInputText(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -115,7 +115,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        OnlyLettersInputText(maxLength = 60, onSearch = {}, state = InputTextState.OUTLINE)
+        OnlyLettersInputText(maxLength = 60, onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -123,7 +123,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        OnlyNumbersInputText(maxLength = 10, onSearch = {}, state = InputTextState.NORMAL)
+        OnlyNumbersInputText(maxLength = 10, onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -131,7 +131,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        BasicInputText(maxLength = 100, onSearch = {}, state = InputTextState.GRAY)
+        BasicInputText(maxLength = 100, onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -139,7 +139,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        CNPJInputText(onSearch = {}, state = InputTextState.OUTLINE)
+        CNPJInputText(onSearch = {})
 
         VerticalSpacer(height = 16)
 
@@ -147,7 +147,7 @@ fun Preview(){
 
         VerticalSpacer(height = 8)
 
-        DateInputText(onSearch = {}, state = InputTextState.OUTLINE)
+        DateInputText(onSearch = { println("Teste: $it") })
 
     }
 

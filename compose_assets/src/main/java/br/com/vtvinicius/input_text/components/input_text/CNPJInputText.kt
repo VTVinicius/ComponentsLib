@@ -11,8 +11,10 @@ import br.com.vtvinicius.input_text.utils.Validation
 @Composable
 fun CNPJInputText(
     modifier: Modifier = Modifier,
-    state: InputTextState = InputTextState.NORMAL,
-    onSearch: (String) -> Unit
+    state: InputTextState = InputTextState.OUTLINE,
+    onSearch: (String) -> Unit,
+    hint: String = "CNPJ",
+    errorMessage :String = "CNPJ inválido"
 ) {
     val styleType: InputTextStyleType = InputTextStyleType.CNPJ
 
@@ -25,7 +27,7 @@ fun CNPJInputText(
     when (error.value) {
         true -> {
             currentState = InputTextState.ERROR
-            styleType.getErrorMessage("CNPJ inválido")
+            styleType.getErrorMessage(errorMessage)
         }
         else -> {
             currentState = state
@@ -35,7 +37,7 @@ fun CNPJInputText(
 
     BaseInputText(
         modifier = modifier,
-        hint = "CNPJ",
+        hint = hint,
         state = currentState,
         mask = Mask.buildCNPJ(),
         maxLength = 14,
@@ -45,10 +47,10 @@ fun CNPJInputText(
             keyboardType = KeyboardType.Number
         ),
         onSearch = {
-            onSearch(it)
             when (Validation().isValidCNPJ(it)) {
                 true -> {
                     error.value = false
+                    onSearch(it)
                 }
                 false -> {
                     error.value = true

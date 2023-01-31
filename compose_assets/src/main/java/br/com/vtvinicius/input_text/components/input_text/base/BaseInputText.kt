@@ -140,7 +140,6 @@ fun BaseInputText(
                 ),
                 shape = ComposeTheme.dimensions.defaultSize,
                 modifier = Modifier
-                    .height(48.dp)
                     .fillMaxWidth()
                     .border(
                         width = state.getBorderSize(),

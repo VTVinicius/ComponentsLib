@@ -11,8 +11,10 @@ import br.com.vtvinicius.input_text.utils.Validation
 @Composable
 fun CPFInputText(
     modifier: Modifier = Modifier,
-    state: InputTextState = InputTextState.NORMAL,
-    onSearch: (String) -> Unit
+    state: InputTextState = InputTextState.OUTLINE,
+    onSearch: (String) -> Unit,
+    hint: String = "CPF",
+    errorMessage: String = "CPF inválido",
 ) {
     val styleType: InputTextStyleType = InputTextStyleType.CPF
 
@@ -25,7 +27,7 @@ fun CPFInputText(
     when (error.value) {
         true -> {
             currentState = InputTextState.ERROR
-            styleType.getErrorMessage("CPF inválido")
+            styleType.getErrorMessage(errorMessage)
         }
         else -> {
             currentState = state
@@ -35,7 +37,7 @@ fun CPFInputText(
 
     BaseInputText(
         modifier = modifier,
-        hint = "CPF",
+        hint = hint,
         state = currentState,
         mask = Mask.buildCpf(),
         maxLength = 11,
@@ -45,10 +47,10 @@ fun CPFInputText(
             keyboardType = KeyboardType.Number
         ),
         onSearch = {
-            onSearch(it)
             when (Validation().validateCPF(it)) {
                 true -> {
                     error.value = false
+                    onSearch(it)
                 }
                 false -> {
                     error.value = true

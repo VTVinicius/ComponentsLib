@@ -11,7 +11,9 @@ import br.com.vtvinicius.input_text.utils.RegexEnum
 fun CepInputText(
     modifier: Modifier = Modifier,
     state: InputTextState = InputTextState.OUTLINE,
-    onSearch: (String) -> Unit
+    onSearch: (String) -> Unit,
+    hint: String = "CEP",
+    errorMessage :String = "CEP inválido"
 ) {
     val styleType: InputTextStyleType = remember { InputTextStyleType.CEP }
 
@@ -24,7 +26,7 @@ fun CepInputText(
     when (error.value) {
         true -> {
             currentState = InputTextState.ERROR
-            styleType.getErrorMessage("CEP incompleto")
+            styleType.getErrorMessage(errorMessage)
         }
         else -> {
             currentState = state
@@ -34,7 +36,7 @@ fun CepInputText(
 
     BaseInputText(
         modifier = modifier,
-        hint = "CEP",
+        hint = hint,
         state = currentState,
         mask = Mask.buildCEP(),
         maxLength = 8,
@@ -50,9 +52,10 @@ fun CepInputText(
                 }
                 false -> {
                     error.value = false
+                    onSearch(it)
                 }
             }
-            onSearch(it)
+
         }
     )
 }
