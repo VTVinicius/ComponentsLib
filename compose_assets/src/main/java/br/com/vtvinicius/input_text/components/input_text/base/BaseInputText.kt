@@ -34,6 +34,7 @@ import java.util.*
 @Composable
 fun BaseInputTextLib(
     modifier: Modifier = Modifier,
+    textModifier: Modifier = Modifier,
     hint: String = "",
     mask: VisualTransformation? = null,
     maxLength: Int? = null,
@@ -144,7 +145,7 @@ fun BaseInputTextLib(
                     unfocusedIndicatorColor = Color.Transparent
                 ),
                 shape = ComposeTheme.dimensions.defaultSize,
-                modifier = Modifier
+                modifier = modifier
                     .fillMaxWidth()
                     .border(
                         width = state.getBorderSize(),
@@ -172,7 +173,7 @@ fun BaseInputTextLib(
                         .padding(start = 16.dp)
                 ) {
                     Text(
-                        modifier = modifier,
+                        modifier = textModifier,
                         textAlign = TextAlign.Center,
                         text = hint,
                         style = TextStyle(

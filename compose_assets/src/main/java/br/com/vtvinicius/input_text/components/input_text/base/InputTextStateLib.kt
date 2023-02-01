@@ -12,7 +12,7 @@ import br.com.vtvinicius.theme.theme.red
 enum class InputTextStateLib(val value: Int) {
     NORMAL(0),
     OUTLINE(1),
-    GRAY(2),
+    INACTIVE(2),
     ERROR(3),
     PASSWORD(4),
     PASSWORD_ERROR(5);
@@ -22,9 +22,9 @@ enum class InputTextStateLib(val value: Int) {
 
     @Composable
     fun getBorderColor(): Color = when (value) {
-        OUTLINE.value -> gray
+        OUTLINE.value -> Color.Black
         ERROR.value -> red
-        PASSWORD.value -> gray
+        PASSWORD.value -> Color.Black
         PASSWORD_ERROR.value -> red
         else -> Color.Transparent
     }
@@ -40,7 +40,7 @@ enum class InputTextStateLib(val value: Int) {
 
     @Composable
     fun getBackgroundColor(): Color = when (value) {
-        GRAY.value -> inputTextGrey
+        INACTIVE.value -> inputTextGrey
         else -> Color.White
     }
 
